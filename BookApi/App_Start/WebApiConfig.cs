@@ -25,7 +25,7 @@ namespace BookApi
                 routeTemplate: "",
                 defaults: null,
                 constraints: null,
-                handler: new RedirectHandler((message => message.RequestUri.ToString()), "swagger"));
+                handler: new RedirectHandler((message => message.RequestUri.ToString()), "swagger/ui/index#"));
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

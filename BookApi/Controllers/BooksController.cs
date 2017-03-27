@@ -23,6 +23,10 @@ namespace BookApi.Controllers
         }
 
         // GET: api/Books
+        /// <summary>
+        /// Gets all Books in the DB
+        /// </summary>
+        /// <returns>All Books</returns>
         [HttpGet]
         public IQueryable<Book> GetBooks()
         {
@@ -30,6 +34,11 @@ namespace BookApi.Controllers
         }
 
         // POST: api/Books
+        /// <summary>
+        /// Posts a book and returns the posted book
+        /// </summary>
+        /// <param name="book">Book object to be posted</param>
+        /// <returns>The newly-posted book</returns>
         [HttpPost]
         public async Task<IHttpActionResult> PostBook(Book book)
         {
