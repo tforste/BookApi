@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -8,7 +9,7 @@ namespace BookApi.Models
 {
     public interface IBookRepository
     {
-        IQueryable<Book> GetAll();
+        Task<IEnumerable<Book>> GetAll();
         Book GetById(int id);
         Task Add(Book book);
     }
@@ -17,9 +18,9 @@ namespace BookApi.Models
     {
         private BookApiContext db = new BookApiContext();
 
-        public IQueryable<Book> GetAll()
+        public async Task<IEnumerable<Book>> GetAll()
         {
-            return db.Books;
+            return await db.Books.ToArrayAsync();
         }
 
         public Book GetById(int id)
@@ -32,21 +33,6 @@ namespace BookApi.Models
             db.Books.Add(book);
             await db.SaveChangesAsync();
         }
-
-        //// POST: api/Books
-        //[ResponseType(typeof(Book))]
-        //public async Task<IHttpActionResult> PostBook(Book book)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    db.Books.Add(book);
-        //    await db.SaveChangesAsync();
-
-        //    return CreatedAtRoute("DefaultApi", new { id = book.Id }, book);
-        //}
 
         protected void Dispose(bool disposing)
         {

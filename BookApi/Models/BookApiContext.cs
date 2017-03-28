@@ -19,6 +19,6 @@ namespace BookApi.Models
         {
         }
 
-        public System.Data.Entity.DbSet<BookApi.Models.Book> Books { get; set; }
+        public virtual DbSet<Book> Books { get; set; }
     }
 }

@@ -28,9 +28,9 @@ namespace BookApi.Controllers
         /// </summary>
         /// <returns>All Books</returns>
         [HttpGet]
-        public IQueryable<Book> GetBooks()
+        public async Task<IEnumerable<Book>> GetBooks()
         {
-            return _repository.GetAll();
+            return await _repository.GetAll();
         }
 
         // POST: api/Books

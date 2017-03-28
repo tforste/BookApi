@@ -20,6 +20,7 @@ namespace BookApi
             // Web API routes
             config.MapHttpAttributeRoutes();
 
+            //Set up the swagger page as home
             config.Routes.MapHttpRoute(
                 name: "swagger_root",
                 routeTemplate: "",
